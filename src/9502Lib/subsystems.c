@@ -20,7 +20,7 @@ void setLCD(unsigned char lineNum, const char *text)
 void drive(int y, int r)
 {
     motorSet(8, y + r);
-    motorSet(7, -(y - r));
+    motorSet(7, -(y + r));
     motorSet(3, -y + r);
     motorSet(4, y - r);
 }

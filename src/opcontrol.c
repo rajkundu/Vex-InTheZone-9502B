@@ -49,11 +49,16 @@ void operatorControl()
 
 	char debugString[17];
 	int clawSpeed;
+	int liftSpeed;
+	int y = 0;
+	int r = 0;
 
 	while(true)
 	{
 		//Drivetrain
-		drive(getJoy(main, leftY), getJoy(main, leftX));
+		y = getJoy(main, leftY);
+		r = btnDown(main, Btn5U) ? -64 : (btnDown(main, Btn6U) ? 64 : 0);
+		drive(y, r);
 		
 		//Goal lift
 		setGoalLift(getJoy(main, rightY));
@@ -75,9 +80,15 @@ void operatorControl()
 			taskCreate(lowerGoalLift, TASK_DEFAULT_STACK_SIZE, NULL, \
 			TASK_PRIORITY_DEFAULT);
 		}
-		
+
 		//Lift
-		setLift(getJoy(partner, rightY));
+		liftSpeed = getJoy(partner, rightY);
+		if(((getLiftPot() > 3850)&&(liftSpeed > 0))|| \
+		((getLiftPot() < 2050)&&(liftSpeed < 0)))
+		{
+			liftSpeed = 0;
+		}
+		setLift(liftSpeed);
 		
 		//Claw
 		clawSpeed = btnDown(partner, Btn5U) ? -127 : \
@@ -85,8 +96,8 @@ void operatorControl()
 		setClaw(clawSpeed);
 
 		//Debugging
-		setLCD(1, strnum(debugString, (getLiftPot() / 50.0)));
-		setLCD(2, strnum(debugString, getGoalLiftPot()));
+		setLCD(1, strnum(debugString, (getLiftPot())));
+		setLCD(2, strnum(debugString, (getLiftPot() / 50.0)));
 
 		delay(1000.0 / refreshRate);
 	}
