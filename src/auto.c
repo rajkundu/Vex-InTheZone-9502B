@@ -49,20 +49,10 @@ void autonomous()
         }
         case 1:
         {
-            routineOne();
+            mobileGoalRight();
             break;
         }
         case 2:
-        {
-            routineTwo();
-            break;
-        }
-        case 3:
-        {
-            routineThree();
-            break;
-        }
-        case 4:
         {
             testProgram();
         }

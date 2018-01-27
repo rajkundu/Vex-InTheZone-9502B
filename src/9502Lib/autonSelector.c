@@ -11,9 +11,7 @@
 char routineNames[][17] =
 {
 	"   Do Nothing   ",
-	"  Routine  One  ",
-	"  Routine  Two  ",
-	" Routine  Three ",
+	"Mobile Goal  (L)",
 	"  TEST PROGRAM  "
 };
 

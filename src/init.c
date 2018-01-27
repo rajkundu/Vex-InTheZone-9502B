@@ -51,6 +51,6 @@ void initialize()
 	lcdClear(lcdPort);
 
     //Start autonomous selector on LCD
-	/*taskCreate(autonSelector, TASK_DEFAULT_STACK_SIZE, NULL, \
-	TASK_PRIORITY_DEFAULT);*/
+	taskCreate(autonSelector, TASK_DEFAULT_STACK_SIZE, NULL, \
+	TASK_PRIORITY_DEFAULT);
 }
