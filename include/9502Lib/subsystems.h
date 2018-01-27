@@ -11,8 +11,8 @@
 #define _SUBSYSTEMS_H
 
 //////////////////////////////     LCD Screen     //////////////////////////////
-// LCD port 0number
-static int* lcdport 0= (PROS_FILE *) 2;
+// LCD port number
+static int* lcdPort = (PROS_FILE *) 2;
 // LCD refresh rate (Hz or times/second)
 static const char lcdRefreshRate = 20;
 /**
@@ -59,7 +59,7 @@ void setLCD(unsigned char lineNum, const char *text);
  *   - = lower
 */
 
-extern void drive(int speed);
+extern void drive(int y, int r);
 extern void setGoalLift(int speed);
 extern void setLift(int speed);
 extern void raiseGoalLift(void *parameter);
@@ -73,7 +73,7 @@ extern void setClaw(int speed);
 /**
  * Analog port 01: Mobile goal lift potentiometer
  * Analog port 02: Claw potentiometer
- * Analog port 03: 
+ * Analog port 03: Lift potentiometer
  * Analog port 04: 
  * Analog port 05: 
  * Analog port 06: 
@@ -84,6 +84,7 @@ extern void setClaw(int speed);
 */
 extern int getGoalLiftPot();
 extern int getClawPot();
+extern int getLiftPot();
 ////////////////////----------------------------------------////////////////////
 
 

@@ -17,12 +17,12 @@ void setLCD(unsigned char lineNum, const char *text)
 
 
 //////////////////////////////       Motors       //////////////////////////////
-void drive(int speed)
+void drive(int y, int r)
 {
-    motorSet(8, speed);
-    motorSet(7, -speed);
-    motorSet(4, speed);
-    motorSet(3, -speed);
+    motorSet(8, y + r);
+    motorSet(7, -(y - r));
+    motorSet(3, -y + r);
+    motorSet(4, y - r);
 }
 void setGoalLift(int speed)
 {
@@ -68,6 +68,10 @@ int getGoalLiftPot()
 int getClawPot()
 {
     return analogRead(2);
+}
+int getLiftPot()
+{
+    return analogRead(3);
 }
 ////////////////////----------------------------------------////////////////////
 
